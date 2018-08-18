@@ -4,11 +4,9 @@
   <head>
 
     <title>SciMapper</title>
-    <script src="https://unpkg.com/three"></script>
-    <script src="https://unpkg.com/three-spritetext"></script>
-    <script src="https://unpkg.com/3d-force-graph"></script>
-    <script src="https://unpkg.com/d3-octree"></script>
-    <script src="https://unpkg.com/d3-force-3d"></script>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -16,10 +14,10 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/sticky_footer.css')}}">
 
+    <!-- Google fonts and icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-
   </head>
 
   <body>
@@ -27,7 +25,7 @@
     <div id="header">
 
       <!-- Static navbar -->
-      <nav class="navbar navbar-default" style="background: rgb(248,248,255)">
+      <nav class="navbar navbar-default" style="background: rgba(255,255,255,1.0)">
 
         <div class="container-fluid">
 
@@ -36,6 +34,27 @@
               <p class="navbar-brand" id="title" href="#">SciMapper</p>
             </div>
           </a>
+          <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+
+              <li>
+                  <div class='icon-container container'>
+                    <a href="{{ url_for('index') }}">
+                      <div class='row'>
+                        <i class="material-icons">account_circle</i>
+                      </div>
+                      <div class='row'>
+                        <span id='hidden'>Profile</span>
+                      </div>
+                      </a>
+                  </div>
+              </li>
+
+
+            </ul>
+
+          </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
@@ -43,7 +62,7 @@
 
       {% block content %}{% endblock %}
 
-    <footer class="footer" style="background: rgb(248,248,255)">
+    <footer class="footer" style="background: rgba(255,255,255,1.0)">
       <div class="container" style="text-align:left">
         <span class="text-muted">by <a href="mailto:danielhhowell@aol.com">Daniel Howell</a> <span class="text-muted"> (2018)
         </span>
