@@ -14,9 +14,8 @@ def get_continuous_chunks(article_text):
     stopwords = ['et', 'al.', 'n', 'deviation', 'windowFigure', 'windowFig', ' ]',
                  'additional', 'data', 'file', ' ', 'distribution', 'significant',
                  'clinical', 'adverse', 'sample', 'studies', 'significance',
-                 '<', '>', '=', 'window', 't', 't-test', 'supplementary', 'Supplementary', 'important'
-                                                                                           'experimental', 'study',
-                 'subjects', 'conditions', 'experiments',
+                 '<', '>', '=', 'window', 't', 't-test', 'supplementary', 'Supplementary',
+                 'important','experimental', 'study', 'subjects', 'conditions', 'experiments',
                  'control', 'panel']
     words = word_tokenize(article_text)
     filtered_text = [w for w in words if w not in stopwords]
@@ -40,6 +39,6 @@ def get_continuous_chunks(article_text):
                 temp.append(pair[0])
             newkeys.append(" ".join(temp))
 
-    counted = Counter(newkeys).most_common(10)
+    counted = Counter(newkeys).most_common(6)
     keywords = [i[0] for i in counted]
     return keywords

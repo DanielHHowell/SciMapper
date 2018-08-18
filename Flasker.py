@@ -28,4 +28,4 @@ def index():
     return render_template('index.html', form=form)
 
 if __name__ == "__main__":
-    app.run(threaded=True)
+    app.run(debug=True)
