@@ -4,4 +4,4 @@ It then performs the same function on each of these terms to generate a network 
 
 Currently only the NCBI is being utilized, which focuses mainly on biological journal articles.
 
-It is powered with Python and the [3D Force-Directed Graph](https://github.com/vasturiano/3d-force-graph) JavaScript library.
+It is powered with Python and the [3D Force-Directed Graph](https://github.com/vasturiano/3d-force-graph) JavaScript library.   

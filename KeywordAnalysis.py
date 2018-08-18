@@ -40,6 +40,6 @@ def get_continuous_chunks(article_text):
                 temp.append(pair[0])
             newkeys.append(" ".join(temp))
 
-    counted = Counter(newkeys).most_common(5)
+    counted = Counter(newkeys).most_common(10)
     keywords = [i[0] for i in counted]
     return keywords
