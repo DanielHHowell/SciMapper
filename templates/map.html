@@ -1,33 +1,23 @@
-<!doctype html>
-<html>
+{% extends "layout.html" %}
 
-  <head>
+{% block content %}
 
-    <title>SciMapper</title>
+  <div id="3d-graph"></div>
+  <script>
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+        .jsonUrl('/static/network.json')
+        .nodeAutoColorBy('group')
+        .backgroundColor('#ffffff')
+        .nodeColor('#000000')
+        .linkOpacity('0.5')
+        .nodeThreeObject(node => {
+          const sprite = new SpriteText(node.id);
+          sprite.color = node.color;
+          sprite.textHeight = 8;
+          return sprite;
+        });
+    // Spread nodes a little wider
+  </script>
 
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/sticky_footer.css')}}">
-
-    <!-- Google fonts and icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <style> body { margin: 0; } </style>
-
-    <script src="{{ url_for('static', filename='js/three.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/three-spritetext.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/3d-force-graph.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
-
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-
-  </head>
-<body>
-
-</body>
-</html>
+{% endblock %}

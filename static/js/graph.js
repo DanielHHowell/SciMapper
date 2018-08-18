@@ -1,8 +1,10 @@
 const Graph = ForceGraph3D()
   (document.getElementById('3d-graph'))
-    .jsonUrl('network.json')
+    .jsonUrl('https://rawgit.com/DanielHHowell/SciMapper/master/network.json')
     .nodeAutoColorBy('group')
-    .linkOpacity(0.5)
+    .backgroundColor('#ffffff')
+    .nodeColor('#000000')
+    .linkOpacity('0.5')
     .nodeThreeObject(node => {
       const sprite = new SpriteText(node.id);
       sprite.color = node.color;
@@ -10,4 +12,4 @@ const Graph = ForceGraph3D()
       return sprite;
     });
 // Spread nodes a little wider
-Graph.d3Force('charge').strength(-500);
+Graph.d3Force('charge').strength(-150);
