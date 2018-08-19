@@ -18,7 +18,7 @@ def json_networker(dict):
     data = {}
     data['nodes'] = [{"id":node} for node in nodes]
     data['links'] = [{"source":link[0],"target":link[1],"value":10} for link in links]
-    with open('home/DanielHHowell/scimapper/static/networks/network.json','w') as f:
+    with open('/home/DanielHHowell/scimapper/static/networks/network.json','w') as f:
         json.dump(data,f)
 
 def main_scraper(topic):
