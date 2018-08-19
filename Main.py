@@ -3,7 +3,7 @@ import KeywordAnalysis
 import json
 
 def keyword_search(search,amount):
-    pmc_ids, query = [pmc for pmc in PageScraper.esearch(search, None, amount, 'relevance')]
+    pmc_ids, query = [pmc for pmc in PageScraper.esearch(search, amount)]
     alltext = [KeywordAnalysis.text_grab(i) for i in pmc_ids]
     keywords = [i.lower() for i in KeywordAnalysis.get_continuous_chunks(" ".join(alltext)) if i != search]
     return keywords

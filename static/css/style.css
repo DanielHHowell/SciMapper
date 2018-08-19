@@ -1,0 +1,93 @@
+#header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#title {
+  font-weight: 600;
+  font-style:normal;
+  font-size: 30px;
+  margin-top: 12%;
+}
+
+#icon {
+   height: 40px;
+   width: 40px;
+   margin-top: 12%;
+   position: center;
+}
+
+.icon-container {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 10px;
+  min-height: 80px;
+  margin-top: 30%;
+}
+
+.icon-container i {
+  font-size: 35px;
+  transition: all .5s ease-in-out;
+}
+
+
+.icon-container a:hover i {
+  transform: scale(0.8);
+}
+
+.icon-container a {
+  color: #777;
+  margin-right: 40px;
+}
+
+.icon-container a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.icon-container a:hover #hidden {
+  display:block;
+}
+
+.icon-container span {
+  position: relative;
+}
+
+#hidden {
+  display: None;
+}
+
+.half-rule {
+    margin-left: 0;
+    text-align: left;
+    width: 80%;
+ }
+
+#btn-related {
+  margin-top: 10%;
+}
+
+.container {
+  width: auto;
+  max-width: 1300px;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.jumbotron {
+  background: rgb(248,248,255)
+}
+
+a {
+  color: #0086b3;
+}
+a:hover, a:focus {
+    color: #00bfff;
+}
+a {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+a:hover {
+    text-decoration: none;
+    background-color: rgba(0, 150, 255, 0.1);
+}
