@@ -4,12 +4,10 @@
 
   <div class="container">
     <div class="jumbotron">
-
-          <h2>SciMapper</h2>
   <form action="" method="post">
     {{ form.csrf }}
     <div class="form-group">
-      <label for="search">Topic:</label>
+      <label for="search"></label>
       <input type="text" class="form-control" id="search" name="search" placeholder="e.g. ibuprofen">
         <br>
 
@@ -18,11 +16,10 @@
 
     <button type="submit" class="btn btn-success">Search</button>
   </form>
-
-        <h2>About</h2>
+        <br><br>
         <p>SciMapper is a way to visualize a scientific concept's linguistic space.
             It takes a central search term and performs basic natural language processing on the abstracts of the most relevant articles, in order to identify likely related concepts.
-            It then performs the same function on each of these extracted terms to generate a network of connections between all concepts and the central search term.
+            It then performs the same function on each of these extracted terms to generate a network of connections between all concepts.
 
             Currently only the NCBI is being utilized, which focuses mainly on biological journal articles.
         </p>

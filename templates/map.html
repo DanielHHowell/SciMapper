@@ -6,18 +6,18 @@
   <script>
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-        .jsonUrl('/static/network.json')
+        .jsonUrl('static/network.json')
         .nodeAutoColorBy('group')
         .backgroundColor('#ffffff')
         .nodeColor('#000000')
         .linkOpacity('0.5')
+        .d3Force('collide', d3.forceCollide('30'))
         .nodeThreeObject(node => {
           const sprite = new SpriteText(node.id);
           sprite.color = node.color;
           sprite.textHeight = 8;
           return sprite;
         });
-    // Spread nodes a little wider
   </script>
 
 {% endblock %}
