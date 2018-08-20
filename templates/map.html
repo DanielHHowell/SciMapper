@@ -4,6 +4,7 @@
 
   <div id="3d-graph"></div>
   <script>
+    localStorage.clear();
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
         .jsonUrl('/home/DanielHHowell/scimapper/static/networks/network.json')
