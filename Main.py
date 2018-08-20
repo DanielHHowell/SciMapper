@@ -23,9 +23,9 @@ def json_networker(dict):
 
 def main_scraper(topic):
     data = {}
-    data[topic] = keyword_search(topic,'5')
+    data[topic] = keyword_search(topic,'10')
     for i in data[topic]:
-        data[i] = keyword_search(i,'5')
+        data[i] = keyword_search(i,'7')
     json_networker(data)
 
 
