@@ -3,7 +3,7 @@ import KeywordAnalysis
 import json
 
 def keyword_search(search,amount):
-    pmc_ids, query = [pmc for pmc in PageScraper.esearch(search, amount)]
+    pmc_ids= [pmc for pmc in PageScraper.esearch(search, amount)]
     alltext = [KeywordAnalysis.text_grab(i) for i in pmc_ids]
     keywords = [i.lower() for i in KeywordAnalysis.get_continuous_chunks(" ".join(alltext)) if i != search]
     return keywords
@@ -22,11 +22,14 @@ def json_networker(dict):
         json.dump(data,f)
 
 def main_scraper(topic):
+
+    #need to add check to remove plural nodes
+
     data = {}
-    data[topic] = keyword_search(topic,'20')
+    data[topic] = keyword_search(topic,'18')
     for i in data[topic]:
-        data[i] = keyword_search(i,'7')
+        data[i] = keyword_search(i,'9')
     json_networker(data)
 
 
-#main_scraper('ibuprofen')
+main_scraper('grid cells')
