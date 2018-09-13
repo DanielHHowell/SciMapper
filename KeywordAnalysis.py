@@ -14,11 +14,11 @@ def get_continuous_chunks(article_text):
     stopwords = ['et', 'al.', 'n', 'deviation', 'windowFigure', 'windowFig', ' ]',
                  'additional', 'data', 'file', ' ', 'distribution', 'significant',
                  'clinical', 'adverse', 'sample', 'studies', 'significance',
-                 '<', '>', '=', 'window', 't', 't-test', 'supplementary', 'Supplementary',
+                 '<', '>', '=', 'window', 't', 't-test', 'supplementary',
                  'important','experimental', 'study', 'subjects', 'conditions', 'experiments',
-                 'control', 'panel']
+                 'control', 'panel', 'outcomes', 'response', 'standardized', '[']
     words = word_tokenize(article_text)
-    filtered_text = [w for w in words if w not in stopwords]
+    filtered_text = [w.lower() for w in words if w.lower() not in stopwords]
     processed_text = pos_tag(filtered_text)
 
     # Regex to grammatically identify a set of: adjective+noun(+noun)
