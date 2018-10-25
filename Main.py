@@ -1,12 +1,13 @@
 import PageScraper
 import KeywordAnalysis
 import json
+from itertools import chain
 
-def keyword_search(search,amount):
-    pmc_ids= [pmc for pmc in PageScraper.esearch(search, amount)]
+def keyword_search(query,amount):
+    pmc_ids= [pmc for pmc in PageScraper.esearch(query, amount)]
     alltext = [KeywordAnalysis.text_grab(i) for i in pmc_ids]
-    keywords = [i.lower() for i in KeywordAnalysis.get_continuous_chunks(" ".join(alltext)) if i != search]
-    return keywords
+    keywords = [i.lower() for i in KeywordAnalysis.get_continuous_chunks(" ".join(alltext), query)]
+    return keywords[:7]
 
 def json_networker(dict):
     nodes, links = (set() for i in range(2))
@@ -23,13 +24,14 @@ def json_networker(dict):
 
 def main_scraper(topic):
 
-    #need to add check to remove plural nodes
-
     data = {}
-    data[topic] = keyword_search(topic,'18')
+    data[topic] = keyword_search(topic,'10')
     for i in data[topic]:
-        data[i] = keyword_search(i,'9')
+        #all_nodes = ' '.join([k+' '+' '.join(v) for k,v in data.items()])
+        data[i] = [i for i in keyword_search(i,'5')]
+        # for j in data[i]:
+        #     if (j in all_nodes) or (j in all_nodes+'s'):
+        #         data[i].remove(j)
     json_networker(data)
 
 
-main_scraper('grid cells')
