@@ -22,7 +22,6 @@ def index():
 
         if form.validate():
             Main.main_scraper(search)
-            time.sleep(.3)
             return render_template('/map.html')
 
         else:

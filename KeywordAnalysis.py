@@ -1,6 +1,7 @@
 from nltk import *
 import requests
 from collections import Counter
+import itertools
 import re
 
 def text_grab(pmc):
@@ -11,14 +12,18 @@ def text_grab(pmc):
     return abstract
 
 
-def get_continuous_chunks(article_text):
-    stopwords = ['et', 'al.', 'deviation', 'windowFigure', 'windowFig', 'differences',
+def get_continuous_chunks(article_text, query):
+    stopwords_s = ['et', 'al.', 'deviation', 'windowFigure', 'windowFig', 'difference',
                  'additional', 'data', 'file', 'distribution', 'significant',
-                 'clinical', 'adverse', 'sample', 'samples', 'studies', 'significance',
+                 'clinical', 'kg', 'adverse', 'sample', 'studies', 'significance',
                  'window', 't-test', 'supplementary', 'important','experimental',
-                 'study', 'subjects', 'conditions', 'experiments', 'subject',
-                 'control', 'panel', 'outcomes', 'response', 'standardized', 'controls',
-                 'publisher', 'abstract']
+                 'study', 'subject', 'condition', 'experiment', 'control', 'panel',
+                 'outcome', 'response', 'standardized', 'publisher', 'abstract',
+                 'model', 'event', 'aversive', 'stimulus', 'training', 'risk',
+                 'impact', 'article', 'patient', 'adult', 'themes', 'concentration',
+                   'participant', query.lower()]
+    stopwords_p = [i+'s' for i in stopwords_s]
+    stopwords = stopwords_s+stopwords_p
     token_words = word_tokenize(article_text)
     words = [w.strip() for w in token_words]
     filtered_text = [w for w in words if (w.lower() not in stopwords) and (len(w)>1)]
@@ -26,7 +31,7 @@ def get_continuous_chunks(article_text):
 
     # Regex to grammatically identify a set of: adjective+noun(+noun)
     # From NLTK: JJ* = adjective/numeral/ordinal/comparative/superlative, NN* = Nouns
-    chunk_gram = r"Chunk: {<NN.?><NN.?>|<JJ.?><NN.?>}"
+    chunk_gram = r"Chunk: {<JJ.?><NN.?>}"
     chunk_parser = RegexpParser(chunk_gram)
     chunked = chunk_parser.parse(processed_text)
     keywords = [i.leaves() for i in chunked if type(i) == Tree]
@@ -40,7 +45,13 @@ def get_continuous_chunks(article_text):
             for pair in chunk:
                 temp.append(pair[0])
             newkeys.append(" ".join(temp))
+    counted = Counter(newkeys).most_common(12)
 
-    counted = Counter(newkeys).most_common(6)
-    keywords = [i[0] for i in counted]
+    keywords = [i[0] for i in counted if (i[0]+'s' != query)
+                and (i[0] != query+'s')]
+
+    for a,b in itertools.combinations(keywords,2):
+        if (a in b.lower()) or (b in a.lower()):
+            keywords.remove(b)
+
     return keywords
