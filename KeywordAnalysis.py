@@ -21,7 +21,8 @@ def get_continuous_chunks(article_text, query):
                  'outcome', 'response', 'standardized', 'publisher', 'abstract',
                  'model', 'event', 'aversive', 'stimulus', 'training', 'risk',
                  'impact', 'article', 'patient', 'adult', 'themes', 'concentration',
-                   'participant', query.lower()]
+                   'participant', 'dose', 'vs', 'normalized', 'mean', 'finding',
+                   'incidental',query.lower()]
     stopwords_p = [i+'s' for i in stopwords_s]
     stopwords = stopwords_s+stopwords_p
     token_words = word_tokenize(article_text)
