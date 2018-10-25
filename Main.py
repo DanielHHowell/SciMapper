@@ -25,10 +25,10 @@ def json_networker(dict):
 def main_scraper(topic):
 
     data = {}
-    data[topic] = keyword_search(topic,'10')
+    data[topic] = keyword_search(topic,'12')
     for i in data[topic]:
         #all_nodes = ' '.join([k+' '+' '.join(v) for k,v in data.items()])
-        data[i] = [i for i in keyword_search(i,'5')]
+        data[i] = [i for i in keyword_search(i,'7')]
         # for j in data[i]:
         #     if (j in all_nodes) or (j in all_nodes+'s'):
         #         data[i].remove(j)
