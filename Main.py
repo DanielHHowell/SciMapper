@@ -20,15 +20,16 @@ def json_networker(dict):
     data['nodes'] = [{"id":node} for node in nodes]
     data['links'] = [{"source":link[0],"target":link[1],"value":10} for link in links]
     with open('/home/DanielHHowell/scimapper/static/networks/network.json','w') as f:
+    #with open('static/networks/network.json','w') as f:
         json.dump(data,f)
 
 def main_scraper(topic):
 
     data = {}
-    data[topic] = keyword_search(topic,'12')
+    data[topic] = keyword_search(topic,'15')
     for i in data[topic]:
         #all_nodes = ' '.join([k+' '+' '.join(v) for k,v in data.items()])
-        data[i] = [i for i in keyword_search(i,'7')]
+        data[i] = [i for i in keyword_search(i,'10')]
         # for j in data[i]:
         #     if (j in all_nodes) or (j in all_nodes+'s'):
         #         data[i].remove(j)

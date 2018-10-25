@@ -68,7 +68,7 @@
 
 .container {
   width: auto;
-  max-width: 1300px;
+  max-width: 1200px;
   padding: 0 15px;
   text-align: center;
 }
@@ -76,6 +76,7 @@
 .jumbotron {
   background: rgb(248,248,255)
 }
+
 
 a {
   color: #0086b3;
