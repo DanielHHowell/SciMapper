@@ -1,0 +1,33 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="https://unpkg.com/three"></script>
+  <script src="https://unpkg.com/three-spritetext"></script>
+  <script src="https://unpkg.com/3d-force-graph"></script>
+    <script src="https://unpkg.com/d3-octree"></script>
+    <script src="https://unpkg.com/d3-force-3d"></script>
+</head>
+
+<body>
+  <div id="3d-graph"></div>
+
+  <script>
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+        .jsonUrl('static/networks/network.json')
+        .nodeAutoColorBy('group')
+        .backgroundColor('#ffffff')
+        .nodeColor('#000000')
+        .linkOpacity('0.5')
+        .d3Force('collide', d3.forceCollide('30'))
+        .nodeThreeObject(node => {
+          const sprite = new SpriteText(node.id);
+          sprite.color = node.color;
+          sprite.textHeight = 8;
+          return sprite;
+        });
+    // Spread nodes a little wider
+
+
+  </script>
+</body>
