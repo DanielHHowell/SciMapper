@@ -6,3 +6,6 @@ Currently only PubMed Central is being utilized, which focuses mainly on biologi
 
 It is powered with Python and the [3D Force-Directed Graph](https://github.com/vasturiano/3d-force-graph) JavaScript library.   
 ![](static/imgs/example.trans.png)
+
+TODO:
+Add depth/breadth slider
