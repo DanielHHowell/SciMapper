@@ -6,7 +6,7 @@ import re
 
 def text_grab(pmc):
     abstract_url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id='
-    search_abstract = abstract_url + pmc + '&retmode=report_type&rettype=medline&api_key=c3b9ad9a1cb4e93717881a2421f597b1ae08'
+    search_abstract = abstract_url + pmc + '&retmode=report_type&rettype=medline&api_key=9893ad891eedcd3802a273ea252798721e08'
     r2 = requests.get(search_abstract).text
     abstract = r2[r2.find('AB') + 6:r2.find('FAU')]
     return abstract
@@ -23,7 +23,8 @@ def get_continuous_chunks(article_text, query):
                  'impact', 'article', 'patient', 'adult', 'themes', 'concentration',
                    'participant', 'dose', 'vs', 'normalized', 'mean', 'finding',
                    'incidental', 'typical', 'other', 'current', 'different', 'minimum',
-                   'initial', 'systematic', 'quality', 'related', query.lower()]
+                   'initial', 'systematic', 'quality', 'related', 'preclinical', 'technical',
+                   'pubic', 'stereotyped',  query.lower()]
     stopwords_p = [i+'s' for i in stopwords_s]
     stopwords = stopwords_s+stopwords_p
     token_words = word_tokenize(article_text)

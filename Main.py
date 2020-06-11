@@ -36,10 +36,12 @@ def main_scraper(topic):
     #scraping concurrency for keyword sub-searches
     with Pool() as p:
         results = p.map(sub_search, data[topic])
-
+    
     for i,j in enumerate(data[topic]):
         data[j] = results[i]
-
+    
+    #for i in data[topic]:
+    #    data[i]=keyword_search(i, '9')
 	#data[i] = [i for i in keyword_search(i,'10')]
         # for j in data[i]:
         #     if (j in all_nodes) or (j in all_nodes+'s'):
