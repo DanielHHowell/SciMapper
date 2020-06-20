@@ -9,3 +9,5 @@ It is powered with Python and the [3D Force-Directed Graph](https://github.com/v
 
 TODO:
 Add depth/breadth slider
+
+Regex parsing
