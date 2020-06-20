@@ -10,7 +10,7 @@ def keyword_search(query,amount):
     return keywords[:7]
 
 def sub_search(keyword):
-    kwds = [i for i in keyword_search(keyword, '15')]
+    kwds = [i for i in keyword_search(keyword, '20')]
     return kwds
 
 def json_networker(dict):
@@ -29,7 +29,7 @@ def json_networker(dict):
 def main_scraper(topic):
 
     data = {}
-    data[topic] = keyword_search(topic,'15')
+    data[topic] = keyword_search(topic,'25')
     #scraping concurrency for keyword sub-searches
     with Pool() as p:
         results = p.map(sub_search, data[topic])

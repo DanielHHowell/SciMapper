@@ -20,5 +20,52 @@
           return sprite;
         });
   </script>
+<div class="container">
+    <div class="jumbotron">
+    <h3>{{ searchtitle }}</h3>
+        <br>
+    <ul>
+        <li><h5>Showing top (<b>{{nResults}}</b>) results</h5></li>
+        <li><h5>Key concepts: {% for word, link in key_tuples %}
+            <a href="{{ link }}" target="_blank">{{ word }} </a> <p style="display:inline">|</p>{% endfor %} </h5></li>
+    </ul>
+        </div>
 
+
+<div class="jumbotron">
+{% for i in reportdict %}
+    <h3 style="color:#000099"><a href="{{ reportdict[i].Link }}" target="_blank"><i>{{ reportdict[i].Title }} </i></a></h3>
+    <br>
+    <ul>
+        <li>PMC: {{ i }} </li>
+        <li>DOI: {{ reportdict[i]['DOI'] }} </li>
+        <li>{{ reportdict[i]['Date'] }} </li>
+        <li>{{ reportdict[i]['Authors'] }} </li>
+    </ul>
+    <br>
+    <p style="line-height:2.5;font-size:17px">{{ reportdict[i]['Abstract'] }}</p>
+    {% if reportdict[i]['Images'] %}
+    <br>
+          <div class="container">
+    <p>Figures from article (hover to zoom):</p>
+    <div class="row">
+        <ul class="list-inline gallery">
+    {% for j in reportdict[i]['Images'] %}
+            <div class="col-lg-4 col-xs-6 thumbnail zoom"><img src="{{ j }}" alt=""></div>
+    {% endfor %}
+        </ul>
+            </div>
+          </div>
+        {% endif %}
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+        {% endfor %}
+    </div>
+    </div>
+
+  </body>
+</html>
 {% endblock %}

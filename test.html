@@ -10,8 +10,7 @@
     <script src="https://unpkg.com/d3-octree"></script>
     <script src="https://unpkg.com/d3-force-3d"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/sticky_footer.css')}}">
@@ -23,6 +22,22 @@
   </head>
 
 <body>
+    <div id="header">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default" style="background: rgb(248,248,255)">
+
+        <div class="container-fluid">
+
+          <a href='{{ url_for("index") }}'>
+            <div class="navbar-header">
+              <p class="navbar-brand" id="title" href="#">SciMapper</p>
+            </div>
+          </a>
+        </div><!--/.container-fluid -->
+      </nav>
+
+    </div>
   <div id="3d-graph"></div>
   <script>
     const Graph = ForceGraph3D()
@@ -40,10 +55,42 @@
           return sprite;
         });
   </script>
-</body>
+
+<div class="container">
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    <h5 class="card-title">A Theory of How Columns in the Neocortex Enable Learning the Structure of the World</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Hawkins J, Ahmad S, Cui Y</h6>
+    <p class="card-text">The neocortex is complex. Within its 2.5 mm thickness are dozens of cell types, numerous layers, and intricate connectivity patterns. The connections between cells suggest a columnar flow of information across layers as well as a laminar flow within some layers. Fortunately, this complex circuitry is remarkably preserved in all regions, suggesting that a canonical circuit consisting of columns and layers underlies everything the neocortex does. Understanding the function of the canonical circuit is a key goal of neuroscience</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+  <br>
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    <h5 class="card-title">A Theory of How Columns in the Neocortex Enable Learning the Structure of the World</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Hawkins J, Ahmad S, Cui Y</h6>
+    <p class="card-text">The neocortex is complex. Within its 2.5 mm thickness are dozens of cell types, numerous layers, and intricate connectivity patterns. The connections between cells suggest a columnar flow of information across layers as well as a laminar flow within some layers. Fortunately, this complex circuitry is remarkably preserved in all regions, suggesting that a canonical circuit consisting of columns and layers underlies everything the neocortex does. Understanding the function of the canonical circuit is a key goal of neuroscience</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+<br>
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    <h5 class="card-title">A Theory of How Columns in the Neocortex Enable Learning the Structure of the World</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Hawkins J, Ahmad S, Cui Y</h6>
+    <p class="card-text">The neocortex is complex. Within its 2.5 mm thickness are dozens of cell types, numerous layers, and intricate connectivity patterns. The connections between cells suggest a columnar flow of information across layers as well as a laminar flow within some layers. Fortunately, this complex circuitry is remarkably preserved in all regions, suggesting that a canonical circuit consisting of columns and layers underlies everything the neocortex does. Understanding the function of the canonical circuit is a key goal of neuroscience</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+    </div>
+
     <footer class="footer" style="background: rgb(248,248,255)">
       <div class="container" style="text-align:left">
-        <span class="text-muted">by <a href="mailto:danielhhowell@aol.com">Daniel Howell</a> <span class="text-muted"> (2018)
+        <span class="text-muted">by <a href="mailto:danielhhowell@aol.com">Daniel Howell</a> <span class="text-muted"> (2020)
         </span>
       </div>
     </footer>

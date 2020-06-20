@@ -13,7 +13,6 @@ def esearch(topic_input, nResults):
     topic = '%22' + topic_input.replace(' ', '+').strip() + '%22'
     base_url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pmc&api_key='+ncbi_api+'&sort=relevance&retmax=' + nResults + '&term='
     r = requests.get(base_url + topic)
-    print(r)
     xmltree = fromstring(r.content)
     PMCIDs = [i.text for i in xmltree[3]]
 
@@ -47,7 +46,7 @@ def get_continuous_chunks(article_texts, query):
                    'participant', 'dose', 'vs', 'normalized', 'mean', 'finding',
                    'incidental', 'typical', 'other', 'current', 'different', 'minimum',
                    'initial', 'systematic', 'quality', 'related', 'preclinical', 'technical',
-                   'pubic', 'stereotyped',  query.lower()]
+                   'pubic', 'stereotyped',  'median', 'public', 'online', 'version', query.lower()]
     stopwords_p = [i+'s' for i in stopwords_s]
     stopwords = stopwords_s+stopwords_p
     token_words = word_tokenize(article_texts)
