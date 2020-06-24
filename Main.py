@@ -3,6 +3,8 @@ import json
 from multiprocessing import Pool
 from itertools import chain
 
+main_dict = {}
+
 def keyword_search(query,amount):
     pmc_ids= [pmc for pmc in Scraper.esearch(query, amount)]
     alltext = [i for i in Scraper.text_grab_multiple(pmc_ids)]
@@ -46,5 +48,7 @@ def main_scraper(topic):
         #         data[i].remove(j)
 
     json_networker(data)
+
+
 
 

@@ -34,6 +34,22 @@ def text_grab_multiple(pmcs):
     abstracts = [i[i.find('AB') + 6:i.find('FAU')] for i in records]
     return abstracts[1:]
 
+def record_grab_multiple(pmcs):
+    # Retrieves the Date, Authors, Title and DOI from the API's XML report
+
+    pmcs_string = ','.join(pmcs)
+    base_url = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pmc&id='
+    search = base_url + pmcs_string+ '&retmode=report_type&rettype=xml&api_key='+ncbi_api
+    r = requests.get(search, stream=True)
+    tree = fromstring(r.content)
+    pmc_data = dict.fromkeys(pmcs)
+    for i,j in enumerate(list(pmc_data)):
+        root = tree[i]
+        pmc_data[j] = {'Date': root[1].text, 'Authors': [author.text for author in root[4]],
+                'Title': root[5].text.title(), 'DOI': root[10].text}
+
+    return pmc_data
+
 def get_continuous_chunks(article_texts, query):
     stopwords_s = ['et', 'al.', 'deviation', 'windowFigure', 'windowFig', 'difference',
                  'additional', 'data', 'file', 'distribution', 'significant',
